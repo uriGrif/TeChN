@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;1,200;1,300;1,500;1,600&display=swap');
+
+.task {
+    background-color: #393E46;
+    border-radius: 7px;
+    padding: 10px;
+    border: 3px solid #00ADB5;
+    text-align: center;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.task:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.taskTitle {
+    font-family: 'Rajdhani', sans-serif;
+    color: #EEEEEE;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}

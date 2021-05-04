@@ -1,0 +1,175 @@
+{
+  "Tasks": [
+    {
+      "id": 1,
+      "name": "Do Something",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 2,
+      "name": "Random Title I have no Idea what to write",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 3,
+      "name": "bla bla bla bla bla bla",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 4,
+      "name": "Do Something",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 5,
+      "name": "Insert Random Task Title",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 6,
+      "name": "an interesting task name",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 7,
+      "name": "Do something",
+      "description": "Random description about doing something",
+      "state": "To Do"
+    },
+    {
+      "id": 8,
+      "name": "bla bla bla bla bla bla",
+      "description": "Random description about doing something",
+      "state": "In Progress"
+    },
+    {
+      "id": 9,
+      "name": "bla bla bla bla bla bla",
+      "description": "Random description about doing something",
+      "state": "In Progress"
+    },
+    {
+      "id": 10,
+      "name": "Do Something",
+      "description": "Random description about doing something",
+      "state": "In Progress"
+    },
+    {
+      "id": 11,
+      "name": "bla bla bla bla bla bla",
+      "description": "Random description about doing something",
+      "state": "In Progress"
+    },
+    {
+      "id": 12,
+      "name": "Do Something",
+      "description": "Random description about doing something",
+      "state": "Done"
+    },
+    {
+      "id": 13,
+      "name": "bla bla bla bla bla bla",
+      "description": "Random description about doing something",
+      "state": "Done"
+    }
+  ],
+  "Ideas": [
+    {
+      "id": 1,
+      "text": "la mejor idea del universo"
+    },
+    {
+      "id": 2,
+      "text": "la segunda mejor idea del universo"
+    },
+    {
+      "id": 3,
+      "text": "idea random no tan buena"
+    }
+  ],
+  "Information": [
+    {
+      "projectId": 1,
+      "content": {
+        "blocks": [
+          {
+            "key": "si0j",
+            "text": "texto cargado desde json prueba informacion",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [],
+            "data": {}
+          }
+        ],
+        "entityMap": {}
+      }
+    }
+  ],
+  "UseCases": [
+    {
+      "projectId": 1,
+      "content": {
+        "blocks": [
+          {
+            "key": "si0j",
+            "text": "texto cargado desde json prueba casos de uso",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [],
+            "data": {}
+          }
+        ],
+        "entityMap": {}
+      }
+    }
+  ],
+  "Requirements": [
+    {
+      "projectId": 1,
+      "content": {
+        "blocks": [
+          {
+            "key": "si0j",
+            "text": "texto cargado desde json prueba requerimientos",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [],
+            "data": {}
+          }
+        ],
+        "entityMap": {}
+      }
+    }
+  ],
+  "Projects":[
+    {
+      "prId": 1,
+      "name": "TeChN"
+    },
+    {
+      "prId": 2,
+      "name": "TeChN 1"
+    },
+    {
+      "prId": 3,
+      "name": "TeChN 2"
+    },
+    {
+      "prId": 4,
+      "name": "TeChN 3"
+    },
+    {
+      "prId": 5,
+      "name": "TeChN 4"
+    }
+  ]
+}

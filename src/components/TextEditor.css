@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;1,200;1,300;1,500;1,600&display=swap');
+
+.editorClassName {
+    background-color: transparent;
+    padding: 0 15px;
+    color: #EEEEEE;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.editorOnFocus {
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.editorClassName li {
+ pointer-events: none;
+}
+
+.editorClassName h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.toolbarOn {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.toolbarOff {
+    display: none;
+}
+
+.toolbarClassName li:hover {
+    transform: none;
+}

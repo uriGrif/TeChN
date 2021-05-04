@@ -1,0 +1,26 @@
+crear proyecto -> 
+    crea proyecto e inicializa informacion, useCases y requerimientos
+
+information ->
+    get content de info
+    actualizar content
+
+useCases ->
+    get content de usos de casos
+    actualizar content
+
+requerimientos ->
+    get content de requerimientos
+    actualizar content
+
+tasks ->
+    get lista de tasks
+    get 1 task
+    crear task
+    editar task
+    eliminar task
+
+ideas ->
+    get lista de ideas
+    crear idea
+    eliminar idea

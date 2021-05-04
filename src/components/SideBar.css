@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    animation: bgIn 1s ease;
+    background-color: rgba(0,0,0,0.5);
+}
+
+@keyframes bgIn{
+    from {
+        background-color: rgba(0,0,0,0);
+    }
+    to {
+        background-color: rgba(0,0,0,0.5);
+    }
+}
+
+.bgNotActive {
+    display: none;
+}
+
+.sideBar {
+    background-color: #EEEEEE;
+    min-height: 100vh;
+    animation: slideIn 0.5s ease;
+    position: fixed;
+    z-index: 15;
+}
+
+.sideBarNotActive {
+    background-color: #EEEEEE;
+    position: fixed;
+    z-index: 15;
+    transform: translateX(100vw);
+}
+
+.sideBarInit {
+    background-color: #EEEEEE;
+    position: fixed;
+    z-index: 15;
+    transform: translateX(100vw);
+}
+
+@keyframes slideIn{
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideOut{
+    from {
+        transform: translateX(75vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes slideOutMobile{
+    from {
+        transform: translateX(0vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+@media (max-width: 600px){
+    .sideBar {
+        width: 100vw;
+        margin-left: 0vw;
+    }
+    .sideBarNotActive {
+        width: 100vw;
+        animation: slideOutMobile 0.5s ease;
+    }
+    .sideBarInit{
+        width: 100vw;
+    }
+}
+
+@media (min-width: 600px){
+    .sideBar {
+        width: 25vw;
+        margin-left: 75vw;
+    }
+    .sideBarNotActive {
+        width: 25vw;
+        animation: slideOut 0.5s ease;
+    }
+    .sideBarInit{
+        width: 25vw;
+    }
+}
+
+.hamburguerButton {
+    position: fixed;
+    border: none;
+    background-color: transparent;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+}
+
+.hamburguerButton:hover {
+    cursor: pointer;
+}
+
+.closeButton {
+    border: none;
+    background-color: transparent;
+    margin-left: 85%;
+    margin-top: 5%;
+}
+
+.elements {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+
+.profilePic {
+    background-color: #393E46;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-top: 5vh;
+}
+
+.profileName {
+    color: #12151B;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    margin: 10px auto;
+}
+
+ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+
+.claseLi {
+    list-style: none;
+    color: #12151B;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+li:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+li h5 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 10px;
+}

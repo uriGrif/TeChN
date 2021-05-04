@@ -1,0 +1,18 @@
+.CustomBtn {
+    background-color: transparent;
+    color: #EEEEEE;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: large;
+    font-weight: 600;
+    border: 2px solid #EEEEEE;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.CustomBtn:hover {
+    background-color: #00ADB5;
+    border: 2px solid #00ADB5;
+}
