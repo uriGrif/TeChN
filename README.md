@@ -7,6 +7,6 @@ It's a project managment WebApp, in which you can create a project, keep up with
 ## Instructions
 
 clone this repo & run 
-> npm install
+`npm install`
 
 I hope that that new devs find this project useful to learn and have an example. Enjoy!
