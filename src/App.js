@@ -12,6 +12,7 @@ function App() {
       <div className="App">
         <TopBar />
         <Switch>
+          <Route exact path="/"><Projects /></Route>
           <Route exact path="/projects"><Projects /></Route>
           <Route path="/project/:prName/:prId"><ProjectDashboard /></Route>
           <Route path="/new-project"><ProjectCreator /></Route>
