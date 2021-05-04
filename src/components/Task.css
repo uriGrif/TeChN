@@ -5,15 +5,14 @@
     background-color: #393E46;
     border-radius: 7px;
     padding: 10px;
-    border: 3px solid #00ADB5;
     text-align: center;
-    margin: 5px;
-    transition: 0.3s;
+    margin: 3px;
+    transition: 0.2s;
 }
 
 .task:hover {
     cursor: pointer;
-    transform: scale(1.03);
+    background-color: #4f555f;
 }
 
 .taskTitle {
