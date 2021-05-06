@@ -94,7 +94,7 @@ const TextEditor = (props) => {
       initialContentState={contentState}
       toolbarClassName={toolbarClass}
       wrapperClassName="wrapperClassName"
-      editorClassName={`editorClassName ${editorClass}`}
+      editorClassName={`editorClassName ${editorClass} myScrollbar`}
       onContentStateChange={onContentStateChange}
       toolbar={toolbar}
       toolbarCustomButtons={[<CustomBtn btnText="Save" handleClick={saveContent}/>]}

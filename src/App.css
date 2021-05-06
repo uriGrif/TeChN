@@ -9,6 +9,32 @@
   background-attachment: fixed;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #EEEEEE;
+  border-radius: 20px;
+}
+
+.myScrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.myScrollbar::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+.myScrollbar::-webkit-scrollbar-thumb {
+  background-color: #EEEEEE;
+  border-radius: 20px;
+}
+
 p {
   font-family: 'Montserrat', sans-serif;
   color: #222831;
