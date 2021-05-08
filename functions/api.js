@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 const projects = require('./routes/projects')
+const tasks = require('./routes/tasks')
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/projects', projects)
+app.use('/tasks', tasks)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -62,9 +62,9 @@ router.post('/add', (req, res) => {
                     projectId: mongoose.Types.ObjectId(projId)
                 }
             )
-            info.save()
-            requirement.save()
-            useCase.save()
+            info.save().catch(err => console.log(err))
+            requirement.save().catch(err => console.log(err))
+            useCase.save().catch(err => console.log(err))
         })
         .catch(err => {
             console.log(err)
