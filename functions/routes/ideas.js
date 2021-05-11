@@ -20,14 +20,14 @@ router.get('/get-all', (req, res) => {
 
 router.post('/add', (req, res) => {
     const projId = req.body.projectId;
-    const Idea = new Idea(
+    const idea = new Idea(
         {
             text: req.body.text,
             projectId: mongoose.Types.ObjectId(projId)
         }
     )
 
-    task.save()
+    idea.save()
         .then(result => {
             res.send(result)
         })
