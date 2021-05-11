@@ -10,13 +10,12 @@ const Projects = () => {
 
     const getProjects = async () => {
         try {
-            const res = await fetch('http://localhost:3000/data.json');
+            const res = await fetch('http://localhost:8000/projects');
             const data = await res.json();
-            var projs = data.Projects;
-            setProjects(projs);
+            setProjects(data);
         }
         catch (err) {
-            console.error('There has been an error loading the task: ' + err);
+            console.error('There has been an error loading the projects: ' + err);
         }
     }
 
@@ -38,7 +37,7 @@ const Projects = () => {
                 {
                     projects.map((item) => {
                         return (
-                            <Link key={item.prId} to={`/project/${item.name}/${item.prId}/information`} >
+                            <Link key={item._id} to={`/project/${item.name}/${item._id}/information`} >
                                 <Project text={item.name}></Project>
                             </Link>
                         )

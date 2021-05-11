@@ -1,15 +1,24 @@
 import './Tasks.css';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import TextEditor from './TextEditor';
 
 
 const Information = () => {
 
+    const { prId } = useParams();
+
     const getInformation = async () => {
         try {
-            const res = await fetch('http://localhost:3000/data.json');
+            const res = await fetch(`http://localhost:8000/information/get/${prId}`);
             const data = await res.json();
-            const info = data.Information[0].content
+            const blocks = data[0].content.blocks
+            if (!data[0].content.entityMap){
+                var info = { blocks: blocks, entityMap: {} }
+            }
+            else{
+                var info = { data }
+            }
             setInfoText(info);
         }
         catch (err) {
@@ -27,7 +36,7 @@ const Information = () => {
         <div className="contenedor">
             { infoText && <TextEditor content={infoText} /> }
             { !infoText && <p>Loading project information</p>}
-        </div>        
+        </div>
     )
 }
 

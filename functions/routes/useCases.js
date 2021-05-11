@@ -7,8 +7,8 @@ mongoose.set('useFindAndModify', false);
 
 router.use(express.json())
 
-router.get('/get', (req, res) => {
-    const projId = req.body.projectId;
+router.get('/get/:prId', (req, res) => {
+    const projId = req.params.prId;
     UseCase.find({ projectId: projId })
         .then(data => {
             res.send(data)

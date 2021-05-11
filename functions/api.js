@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 8000
 const mongoose = require('mongoose')
+const cors = require('cors')
 require('dotenv').config();
 
 const projects = require('./routes/projects')
@@ -10,6 +11,8 @@ const ideas = require('./routes/ideas')
 const informations = require('./routes/informations')
 const requirements = require('./routes/requirements')
 const useCases = require('./routes/useCases')
+
+app.use(cors())
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 

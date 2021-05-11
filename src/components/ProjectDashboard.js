@@ -14,7 +14,7 @@ import Requirements from './Requirements';
 const ProjectDashboard = () => {
 
     const match = useRouteMatch();
-    let { prName, projectId }  = useParams();
+    let { prName }  = useParams();
 
     return (
         <Router>
