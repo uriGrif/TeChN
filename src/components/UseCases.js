@@ -2,31 +2,20 @@ import './Tasks.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import TextEditor from './TextEditor';
-
+import { getText } from '../utils/textHelper'
 
 const UseCases = () => {
 
     const { prId } = useParams();
 
     const getUseCases = async () => {
-        try {
-            const res = await fetch(`http://localhost:8000/requirements/get/${prId}`);
-            const data = await res.json();
-            const blocks = data[0].content.blocks
-            if (!data[0].content.entityMap){
-                var cases = { blocks: blocks, entityMap: {} }
-            }
-            else{
-                var cases = { data }
-            }
-            setUseCases(cases);
-        }
-        catch (err) {
-            console.log('There has been an error loading the project Use Cases: ' + err);
-        }
+        const obj = await getText("useCases", prId)
+        setUseCases(obj.text)
+        setCasesId(obj.textId)
     }
 
     const [useCases, setUseCases] = useState();
+    const [casesId, setCasesId] = useState()
 
     useEffect(() => {
         getUseCases();
@@ -34,7 +23,7 @@ const UseCases = () => {
 
     return (
         <div className="contenedor">
-            { useCases && <TextEditor content={useCases} /> }
+            { useCases && <TextEditor content={useCases} type="useCases" textId={casesId}/> }
             { !useCases && <p>Loading project Use Cases</p>}
         </div>        
     )

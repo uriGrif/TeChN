@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import CustomBtn from './CustomBtn'
+import { AddProject } from '../utils/projectsHelper';
 
 const ProjectCreator = () => {
 
@@ -14,19 +15,8 @@ const ProjectCreator = () => {
 
     const handleClickCreate = (e) => {
         if (name.length > 0) {
-            try {
-                fetch('http://localhost:8000/projects/add', {
-                    method: "POST",
-                    body: JSON.stringify({ name: name }),
-                    headers: { "Content-type": "application/json; charset=UTF-8" }
-                })
-            }
-            catch (err) {
-                console.log(err)
-            }
-            finally {
-                history.goBack();
-            }
+            AddProject(name)
+            history.goBack();
         }
         else {
             alert("Debes darle un nombre a tu proyecto");

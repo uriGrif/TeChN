@@ -2,6 +2,7 @@ import './Tasks.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import TextEditor from './TextEditor';
+import { getText } from '../utils/textHelper'
 
 
 const Information = () => {
@@ -9,24 +10,13 @@ const Information = () => {
     const { prId } = useParams();
 
     const getInformation = async () => {
-        try {
-            const res = await fetch(`http://localhost:8000/information/get/${prId}`);
-            const data = await res.json();
-            const blocks = data[0].content.blocks
-            if (!data[0].content.entityMap){
-                var info = { blocks: blocks, entityMap: {} }
-            }
-            else{
-                var info = { data }
-            }
-            setInfoText(info);
-        }
-        catch (err) {
-            console.log('There has been an error loading the project Information: ' + err);
-        }
+        const obj = await getText("information", prId)
+        setInfoText(obj.text)
+        setInfoId(obj.textId)
     }
 
     const [infoText, setInfoText] = useState();
+    const [infoId, setInfoId] = useState()
 
     useEffect(() => {
         getInformation();
@@ -34,7 +24,7 @@ const Information = () => {
 
     return (
         <div className="contenedor">
-            { infoText && <TextEditor content={infoText} /> }
+            { infoText && <TextEditor content={infoText} type="information" textId={infoId} /> }
             { !infoText && <p>Loading project information</p>}
         </div>
     )

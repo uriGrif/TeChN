@@ -1,11 +1,13 @@
 import './taskCreator.css';
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import CustomBtn from './CustomBtn'
+import { addTask } from '../utils/tasksHelper'
 
 const TaskCreator = (props) => {
 
     const history = useHistory();
+    const { prId } = useParams();
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -20,8 +22,7 @@ const TaskCreator = (props) => {
 
     const handleClickCreate = (e) => {
         if (title.length > 0 && description.length > 0) {
-            //addTaskToDataBase(title, task)
-            console.log("Task Created - Title: " + title);
+            addTask(title, description, prId)
             history.goBack();
         }
         else {

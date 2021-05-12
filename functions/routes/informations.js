@@ -19,7 +19,7 @@ router.get('/get/:prId', (req, res) => {
 })
 
 router.put('/update', (req, res) => {
-    const informationId = req.body.informationId
+    const informationId = req.body.textId
     const newContent = req.body.content
 
     Information.findByIdAndUpdate(informationId,

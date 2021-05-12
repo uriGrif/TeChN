@@ -4,8 +4,8 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { Link, useRouteMatch } from 'react-router-dom';
 import { ContextMenu, MenuItem, ContextMenuTrigger, connectMenu } from "react-contextmenu";
 import MyContextMenu from './MyContextMenu';
-import { addIdea, removeIdea } from '../lib/ideasHelper';
 import CustomBtn from './CustomBtn';
+import { removeItem } from '../utils/arraysHelper'
 
 
 const Ideas = () => {
@@ -34,10 +34,8 @@ const Ideas = () => {
     const ConnectedMenu = connectMenu(MENU_TYPE)(MyContextMenu);
 
     const handleMenuClick = (e, data, target) => {
-        // console.log(data.action);
-        // console.log(data.id);
         if (data.action === 'Delete') {
-            setIdeas(removeIdea(ideas, data.id));
+            setIdeas(removeItem(ideas, data.id));
         }
     }
 
@@ -57,10 +55,9 @@ const Ideas = () => {
                         ideas.map((item) => {
                             return (
                                 <ContextMenuTrigger
-                                    id={MENU_TYPE} key={item.id}
+                                    id={MENU_TYPE} key={item._id}
                                     collect={() => { return { item: item, onItemClick: handleMenuClick } }}
-                                >
-                                    <Link to={`/ideas/${item.id}`}><Idea item={item} /> </Link>
+                                ><Idea item={item} />
                                 </ContextMenuTrigger>
                             );
                         })

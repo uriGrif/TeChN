@@ -6,22 +6,21 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 import CustomBtn from './CustomBtn';
+import { getOneTask, editTask, deleteTask } from '../utils/tasksHelper'
 
 
 const TaskDetails = () => {
 
     let taskId = useParams().id;
+    const { prId, prName } = useParams()
     const thisUrl = useRouteMatch().url;
     const history = useHistory();
 
     const getTask = async () => {
         try {
-            const res = await fetch('http://localhost:3000/data.json');
-            const data = await res.json();
-            var tasks = data.Tasks;
-            var myTask = tasks.find(element => element.id == taskId);
-            setTask(myTask);
-            inicializarStates(myTask);
+            const data = await getOneTask(taskId)
+            setTask(data)
+            inicializarStates(data);
         }
         catch (err) {
             console.error('There has been an error loading the task: ' + err);
@@ -43,13 +42,14 @@ const TaskDetails = () => {
     }, [])
 
     const inicializarStates = (tarea) => {
-        setTaskTitle(tarea.name);
+        setTaskTitle(tarea.title);
         setTaskDesc(tarea.description);
         setTaskState(tarea.state);
     }
 
     const handleDeleteClick = () => {
-        //eliminar
+        deleteTask(taskId)
+        history.goBack()
     }
 
     const handleTaskTitleChange = (e) => {
@@ -74,21 +74,29 @@ const TaskDetails = () => {
     }
 
     const handleClickEditTask = () => {
-        //editar
-        window.location.reload(false);
+        editTask(taskTitle, taskDesc, taskState, taskId)
+        var newAtributes = {
+            title: taskTitle,
+            description: taskDesc,
+            state: taskState
+        }
+        var aux = { ...task, ...newAtributes}
+        setTask(aux)
+        inicializarStates(task)
+        setMode("view")
     }
 
     return (
 
         <div className="contenedor">
-            <button className="mybtn" onClick={() => history.goBack()}>
+            <Link className="mybtn" to={`/project/${prName}/${prId}/tasks`}>
                 <IconContext.Provider value={{ color: "#EEEEEE", size: "2em" }}>
                     <BiArrowBack />
                 </IconContext.Provider>
-            </button>
+            </Link>
             {mode && mode === "view" &&
                 <div>
-                    <h1 className="title">{task.name}</h1>
+                    <h1 className="title">{task.title}</h1>
                     <p className="description">{task.description}</p>
                     <label className="statusTitle">Status:</label>
                     <label className="status">{task.state}</label>
@@ -129,9 +137,7 @@ const TaskDetails = () => {
                     </div>
                     <div className="botones">
                         <CustomBtn btnText="Cancel" handleClick={() => setMode("view")} />
-                        <Link to={thisUrl} onClick={handleClickEditTask}>
-                            <CustomBtn btnText="Update Task" />
-                        </Link>
+                        <CustomBtn btnText="Update Task" handleClick={handleClickEditTask}/>
                     </div>
 
                 </div>

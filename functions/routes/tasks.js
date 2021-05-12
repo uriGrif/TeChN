@@ -7,8 +7,8 @@ mongoose.set('useFindAndModify', false);
 
 router.use(express.json())
 
-router.get('/get-all', (req, res) => {
-    const projId = req.body.projectId;
+router.get('/get-all/:prId', (req, res) => {
+    const projId = req.params.prId;
     Task.find({ projectId: projId })
         .then(data => {
             res.send(data)
@@ -18,8 +18,8 @@ router.get('/get-all', (req, res) => {
         })
 })
 
-router.get('/get-one', (req, res) => {
-    const taskId = req.body.taskId;
+router.get('/get-one/:taskId', (req, res) => {
+    const taskId = req.params.taskId;
     Task.findById(taskId)
         .then(data => {
             res.send(data)

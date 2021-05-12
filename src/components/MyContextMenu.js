@@ -4,7 +4,7 @@ import { ContextMenu, MenuItem } from "react-contextmenu";
 const MyContextMenu = (props) => {
     const { id, trigger } = props;
     const handleItemClick = trigger ? trigger.onItemClick : null;
-    var itemId = trigger ? trigger.item.id : null;
+    var itemId = trigger ? trigger.item._id : null;
 
     return (
         <ContextMenu id={id}>

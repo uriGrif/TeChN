@@ -4,6 +4,7 @@ import { Editor } from '@nick4fake/react-draft-wysiwyg'; //would use the actual 
 import "@nick4fake/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import './TextEditor.css';
 import CustomBtn from './CustomBtn';
+import { updateText } from '../utils/textHelper'
 
 const TextEditor = (props) => {
 
@@ -78,7 +79,7 @@ const TextEditor = (props) => {
   }
 
   const saveContent = () => {
-    //guardar en mongo utilizando las props, q son la coleccion (info, usos de caso, etc) y el id del proyecto? 
+    updateText(contentState, props.textId, props.type)
   }
 
   return (
@@ -97,7 +98,7 @@ const TextEditor = (props) => {
       editorClassName={`editorClassName ${editorClass} myScrollbar`}
       onContentStateChange={onContentStateChange}
       toolbar={toolbar}
-      toolbarCustomButtons={[<CustomBtn btnText="Save" handleClick={saveContent}/>]}
+      toolbarCustomButtons={[<CustomBtn btnText="Save" handleClick={saveContent} />]}
     />
   )
 }

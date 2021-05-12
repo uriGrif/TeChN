@@ -19,7 +19,7 @@ router.get('/get/:prId', (req, res) => {
 })
 
 router.put('/update', (req, res) => {
-    const useCaseId = req.body.useCaseId
+    const useCaseId = req.body.textId
     const newContent = req.body.content
 
     UseCase.findByIdAndUpdate(useCaseId,

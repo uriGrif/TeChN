@@ -2,28 +2,24 @@ import './Tasks.css';
 import { useState, useEffect } from 'react';
 import Task from './Task';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch, useParams } from 'react-router-dom';
 import { ContextMenu, MenuItem, ContextMenuTrigger, connectMenu } from "react-contextmenu";
 import MyContextMenu from './MyContextMenu';
-import { generateId, addTodo, findById, updateTodo, removeTodo } from '../lib/tasksHelper';
 import CustomBtn from './CustomBtn';
 import TaskCreator from './taskCreator';
 import TaskDetails from './TaskDetails';
+import { getTasks, editTask, deleteTask } from '../utils/tasksHelper'
+import { findById, updateItem, removeItem } from '../utils/arraysHelper'
 
 
 const Tasks = () => {
 
     const match = useRouteMatch();
+    const { prId } = useParams();
 
     const loadTasks = async () => {
-        try {
-            const res = await fetch('http://localhost:3000/data.json');
-            const data = await res.json();
-            setTasks(data.Tasks);
-        }
-        catch (err) {
-            console.log('There has been an error loading the tasks: ' + err);
-        }
+        const tasks = await getTasks(prId)
+        setTasks(tasks)
     }
 
     const [tasks, setTasks] = useState([]);
@@ -37,15 +33,15 @@ const Tasks = () => {
     const ConnectedMenu = connectMenu(MENU_TYPE)(MyContextMenu);
 
     const handleMenuClick = (e, data, target) => {
-        // console.log(data.action);
-        // console.log(data.id);
         let obj = findById(data.id, tasks);
         if (data.action !== 'Delete') {
             obj.state = data.action;
-            setTasks(updateTodo(tasks, obj));
+            setTasks(updateItem(tasks, obj));
+            editTask(obj.title, obj.description, obj.state, obj._id)
         }
         else {
-            setTasks(removeTodo(tasks, data.id));
+            setTasks(removeItem(tasks, data.id));
+            deleteTask(obj._id)
         }
     }
 
@@ -73,10 +69,10 @@ const Tasks = () => {
                                 if (item.state === "To Do") {
                                     return (
                                         <ContextMenuTrigger
-                                            id={MENU_TYPE} key={item.id}
+                                            id={MENU_TYPE} key={item._id}
                                             collect={() => { return { item: item, case: 1, onItemClick: handleMenuClick } }}
                                         >
-                                            <Link to={`${match.url}/${item.id}`}><Task item={item} /> </Link>
+                                            <Link to={`${match.url}/${item._id}`}><Task item={item} /> </Link>
                                         </ContextMenuTrigger>
                                     );
                                 }
@@ -95,10 +91,10 @@ const Tasks = () => {
                                 if (item.state === "In Progress") {
                                     return (
                                         <ContextMenuTrigger
-                                            id={MENU_TYPE} key={item.id}
+                                            id={MENU_TYPE} key={item._id}
                                             collect={() => { return { item: item, case: 2, onItemClick: handleMenuClick } }}
                                         >
-                                            <Link to={`${match.url}/${item.id}`}><Task item={item} /> </Link>
+                                            <Link to={`${match.url}/${item._id}`}><Task item={item} /> </Link>
                                         </ContextMenuTrigger>
                                     );
                                 }
@@ -117,10 +113,10 @@ const Tasks = () => {
                                 if (item.state === "Done") {
                                     return (
                                         <ContextMenuTrigger
-                                            id={MENU_TYPE} key={item.id}
+                                            id={MENU_TYPE} key={item._id}
                                             collect={() => { return { item: item, case: 3, onItemClick: handleMenuClick } }}
                                         >
-                                            <Link to={`${match.url}/${item.id}`}><Task item={item} /> </Link>
+                                            <Link to={`${match.url}/${item._id}`}><Task item={item} /> </Link>
                                         </ContextMenuTrigger>
                                     );
                                 }
