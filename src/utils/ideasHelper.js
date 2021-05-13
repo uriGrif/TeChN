@@ -1,6 +1,6 @@
 const getIdeas = async prId => {
 	try {
-		const res = await fetch(`http://localhost:8000/ideas/get-all/${prId}`);
+		const res = await fetch(`/.netlify/functions/api/ideas/get-all/${prId}`);
 		const data = await res.json();
 		return data;
 	} catch (err) {
@@ -10,7 +10,7 @@ const getIdeas = async prId => {
 
 const addIdea = async (text, prId) => {
 	try {
-		fetch("http://localhost:8000/ideas/add", {
+		fetch("/.netlify/functions/api/ideas/add", {
 			method: "POST",
 			body: JSON.stringify({
 				text: text,
@@ -25,7 +25,7 @@ const addIdea = async (text, prId) => {
 
 const deleteIdea = async ideaId => {
 	try {
-		fetch(`http://localhost:8000/ideas/delete`, {
+		fetch(`/.netlify/functions/api/ideas/delete`, {
 			method: "DELETE",
 			body: JSON.stringify({
 				ideaId: ideaId
