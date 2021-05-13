@@ -1,4 +1,4 @@
-const getIdeas = async prId => {
+export default getIdeas = async prId => {
 	try {
 		const res = await fetch(`/.netlify/functions/api/ideas/get-all/${prId}`);
 		const data = await res.json();
@@ -8,7 +8,7 @@ const getIdeas = async prId => {
 	}
 };
 
-const addIdea = async (text, prId) => {
+export default addIdea = async (text, prId) => {
 	try {
 		fetch("/.netlify/functions/api/ideas/add", {
 			method: "POST",
@@ -23,7 +23,7 @@ const addIdea = async (text, prId) => {
 	}
 };
 
-const deleteIdea = async ideaId => {
+export default deleteIdea = async ideaId => {
 	try {
 		fetch(`/.netlify/functions/api/ideas/delete`, {
 			method: "DELETE",
@@ -36,7 +36,3 @@ const deleteIdea = async ideaId => {
 		console.log(err);
 	}
 };
-
-exports.getIdeas = getIdeas;
-exports.addIdea = addIdea;
-exports.deleteIdea = deleteIdea;
