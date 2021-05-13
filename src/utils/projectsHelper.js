@@ -1,4 +1,4 @@
-export default AddProject = name => {
+export function AddProject(name) {
 	try {
 		fetch("/.netlify/functions/api/projects/add", {
 			method: "POST",
@@ -8,4 +8,4 @@ export default AddProject = name => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
