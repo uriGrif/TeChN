@@ -1,4 +1,4 @@
-const getTasks = async prId => {
+export default getTasks = async prId => {
 	try {
 		const res = await fetch(`/.netlify/functions/api/tasks/get-all/${prId}`);
 		const data = await res.json();
@@ -8,7 +8,7 @@ const getTasks = async prId => {
 	}
 };
 
-const getOneTask = async taskId => {
+export default getOneTask = async taskId => {
 	try {
 		const res = await fetch(`/.netlify/functions/api/tasks/get-one/${taskId}`);
 		const task = await res.json();
@@ -18,7 +18,7 @@ const getOneTask = async taskId => {
 	}
 };
 
-const addTask = async (title, description, prId) => {
+export default addTask = async (title, description, prId) => {
 	try {
 		fetch("/.netlify/functions/api/tasks/add", {
 			method: "POST",
@@ -35,7 +35,7 @@ const addTask = async (title, description, prId) => {
 	}
 };
 
-const editTask = async (title, description, state, taskId) => {
+export default editTask = async (title, description, state, taskId) => {
 	try {
 		fetch(`/.netlify/functions/api/tasks/edit`, {
 			method: "PUT",
@@ -52,7 +52,7 @@ const editTask = async (title, description, state, taskId) => {
 	}
 };
 
-const deleteTask = async taskId => {
+export default deleteTask = async taskId => {
 	try {
 		fetch(`/.netlify/functions/api/tasks/delete`, {
 			method: "DELETE",
@@ -65,9 +65,3 @@ const deleteTask = async taskId => {
 		console.log(err);
 	}
 };
-
-exports.getTasks = getTasks;
-exports.getOneTask = getOneTask;
-exports.addTask = addTask;
-exports.editTask = editTask;
-exports.deleteTask = deleteTask;

@@ -1,4 +1,4 @@
-const updateText = (content, textId, type) => {
+export default updateText = (content, textId, type) => {
 	try {
 		fetch(`/.netlify/functions/api/${type}/update`, {
 			method: "PUT",
@@ -13,7 +13,7 @@ const updateText = (content, textId, type) => {
 	}
 };
 
-const getText = async (type, prId) => {
+export default getText = async (type, prId) => {
 	try {
 		const res = await fetch(`/.netlify/functions/api/${type}/get/${prId}`);
 		const data = await res.json();
@@ -31,7 +31,3 @@ const getText = async (type, prId) => {
 		);
 	}
 };
-
-exports.getText = getText;
-
-exports.updateText = updateText;

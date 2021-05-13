@@ -1,4 +1,4 @@
-const AddProject = name => {
+export default AddProject = name => {
 	try {
 		fetch("/.netlify/functions/api/projects/add", {
 			method: "POST",
@@ -9,5 +9,3 @@ const AddProject = name => {
 		console.log(err);
 	}
 };
-
-exports.AddProject = AddProject;
