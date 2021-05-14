@@ -1,4 +1,4 @@
-export default getIdeas = async prId => {
+export async function getIdeas(prId) {
 	try {
 		const res = await fetch(`/.netlify/functions/api/ideas/get-all/${prId}`);
 		const data = await res.json();
@@ -6,9 +6,9 @@ export default getIdeas = async prId => {
 	} catch (err) {
 		console.log("There has been an error loading the tasks: " + err);
 	}
-};
+}
 
-export default addIdea = async (text, prId) => {
+export async function addIdea(text, prId) {
 	try {
 		fetch("/.netlify/functions/api/ideas/add", {
 			method: "POST",
@@ -21,9 +21,9 @@ export default addIdea = async (text, prId) => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
 
-export default deleteIdea = async ideaId => {
+export async function deleteIdea(ideaId) {
 	try {
 		fetch(`/.netlify/functions/api/ideas/delete`, {
 			method: "DELETE",
@@ -35,4 +35,4 @@ export default deleteIdea = async ideaId => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}

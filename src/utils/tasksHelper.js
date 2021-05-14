@@ -1,4 +1,4 @@
-export default getTasks = async prId => {
+export async function getTasks(prId) {
 	try {
 		const res = await fetch(`/.netlify/functions/api/tasks/get-all/${prId}`);
 		const data = await res.json();
@@ -6,9 +6,9 @@ export default getTasks = async prId => {
 	} catch (err) {
 		console.log("There has been an error loading the tasks: " + err);
 	}
-};
+}
 
-export default getOneTask = async taskId => {
+export async function getOneTask(taskId) {
 	try {
 		const res = await fetch(`/.netlify/functions/api/tasks/get-one/${taskId}`);
 		const task = await res.json();
@@ -16,9 +16,9 @@ export default getOneTask = async taskId => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
 
-export default addTask = async (title, description, prId) => {
+export async function addTask(title, description, prId) {
 	try {
 		fetch("/.netlify/functions/api/tasks/add", {
 			method: "POST",
@@ -33,9 +33,9 @@ export default addTask = async (title, description, prId) => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
 
-export default editTask = async (title, description, state, taskId) => {
+export async function editTask(title, description, state, taskId) {
 	try {
 		fetch(`/.netlify/functions/api/tasks/edit`, {
 			method: "PUT",
@@ -50,9 +50,9 @@ export default editTask = async (title, description, state, taskId) => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
 
-export default deleteTask = async taskId => {
+export async function deleteTas(taskId) {
 	try {
 		fetch(`/.netlify/functions/api/tasks/delete`, {
 			method: "DELETE",
@@ -64,4 +64,4 @@ export default deleteTask = async taskId => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}

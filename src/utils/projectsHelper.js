@@ -1,4 +1,4 @@
-export function AddProject(name) {
+export async function AddProject(name) {
 	try {
 		fetch("/.netlify/functions/api/projects/add", {
 			method: "POST",

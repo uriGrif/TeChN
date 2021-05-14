@@ -1,4 +1,4 @@
-export default updateText = (content, textId, type) => {
+export async function updateText(content, textId, type) {
 	try {
 		fetch(`/.netlify/functions/api/${type}/update`, {
 			method: "PUT",
@@ -11,9 +11,9 @@ export default updateText = (content, textId, type) => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+}
 
-export default getText = async (type, prId) => {
+export async function getText(type, prId) {
 	try {
 		const res = await fetch(`/.netlify/functions/api/${type}/get/${prId}`);
 		const data = await res.json();
@@ -30,4 +30,4 @@ export default getText = async (type, prId) => {
 			"There has been an error loading the project Information: " + err
 		);
 	}
-};
+}
