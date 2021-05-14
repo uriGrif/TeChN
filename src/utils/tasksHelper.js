@@ -52,7 +52,7 @@ export async function editTask(title, description, state, taskId) {
 	}
 }
 
-export async function deleteTas(taskId) {
+export async function deleteTask(taskId) {
 	try {
 		fetch(`/.netlify/functions/api/tasks/delete`, {
 			method: "DELETE",
