@@ -9,3 +9,13 @@ export async function AddProject(name) {
 		console.log(err);
 	}
 }
+
+export async function GetProjects() {
+	try {
+		const res = await fetch(".netlify/functions/api/projects");
+		const data = await res.json();
+		return data;
+	} catch (err) {
+		console.log(err);
+	}
+}

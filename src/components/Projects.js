@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../App.css";
 import CustomBtn from "./CustomBtn";
 import Project from "./Project";
+import { GetProjects } from "../utils/projectsHelper";
 
 const Projects = () => {
 	const getProjects = async () => {
 		try {
-			const res = await fetch(".netlify/functions/api/projects");
-			const data = await res.json();
+			const data = await GetProjects();
 			setProjects(data);
 		} catch (err) {
 			console.error("There has been an error loading the projects: " + err);
